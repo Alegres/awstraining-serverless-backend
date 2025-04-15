@@ -1,0 +1,147 @@
+## Prerequisites
+* Python & Pip
+* Virtualenv Manager
+* Node Package Manager
+* CDK
+* AWS CLI
+* [PROFILE] with credentials related to your Sandbox Technical User created in ```C:\Users\[CORPID]\.aws\credentials``` 
+
+**Instruction:**
+* https://docs.aws.amazon.com/cdk/v2/guide/work-with-cdk-python.html
+
+Ensure pip & virtualenv are installed:
+```bash
+python -m ensurepip --upgrade
+python -m pip install --upgrade pip
+python -m pip install --upgrade virtualenv
+```
+
+Install CDK:
+```bash
+npm install -g aws-cdk@2.185.0
+```
+
+## Setup CDK project
+Create an empty directory and go there:
+```bash
+mkdir app
+cd app
+```
+
+Initialize CDK (we will use Python):
+```bash
+cdk init app --language python
+```
+
+Activate project's virtual environment:
+```bash
+source .venv/Scripts/activate
+```
+
+Install required Python's dependencies:
+```bash
+python -m pip install -r requirements.txt
+```
+
+Make sure that you ```C:\Users\[CORPID]\.aws\config``` file has the correct region set (we should work in **eu-central-1**):
+```
+[default]
+region = eu-central-1
+output = json
+```
+
+You can also export **AWS_REGION:**
+```bash
+export AWS_REGION=eu-central-1
+```
+
+Bootstrap CDK to your account:
+```bash
+cdk bootstrap --profile [PROFILE]
+```
+
+Run synthesis:
+```bash
+cdk synth
+```
+
+Deploy the infrastructure:
+```
+cdk deploy --profile [PROFILE]
+```
+
+## Common Issues
+If you face the following error:
+```bash
+$ cdk synth
+Traceback (most recent call last):
+  File "C:\personal\awstraining-serverless\basic-backend\app\app.py", line 4, in <module>
+    import aws_cdk as cdk
+ModuleNotFoundError: No module named 'aws_cdk'
+Subprocess exited with error 1
+```
+
+make sure that you activated your env:
+```bash
+source .venv/Scripts/activate
+```
+
+Also, when running **cdk** commands, make sure to stay at the location where your **cdk.json** file is present.
+
+## Welcome to your CDK Python project!
+
+This is a blank project for CDK development with Python.
+
+The `cdk.json` file tells the CDK Toolkit how to execute your app.
+
+This project is set up like a standard Python project.  The initialization
+process also creates a virtualenv within this project, stored under the `.venv`
+directory.  To create the virtualenv it assumes that there is a `python3`
+(or `python` for Windows) executable in your path with access to the `venv`
+package. If for any reason the automatic creation of the virtualenv fails,
+you can create the virtualenv manually.
+
+To manually create a virtualenv on MacOS and Linux:
+
+```
+$ python -m venv .venv
+```
+
+After the init process completes and the virtualenv is created, you can use the following
+step to activate your virtualenv.
+
+```
+$ source .venv/bin/activate
+```
+
+If you are a Windows platform, you would activate the virtualenv like this:
+
+```
+% .venv\Scripts\activate.bat
+```
+
+Once the virtualenv is activated, you can install the required dependencies.
+
+```
+$ pip install -r requirements.txt
+```
+
+At this point you can now synthesize the CloudFormation template for this code.
+
+```
+$ cdk synth
+```
+
+To add additional dependencies, for example other CDK libraries, just add
+them to your `setup.py` file and rerun the `pip install -r requirements.txt`
+command.
+
+### Useful commands
+
+ * `cdk ls`          list all stacks in the app
+ * `cdk synth`       emits the synthesized CloudFormation template
+ * `cdk deploy`      deploy this stack to your default AWS account/region
+ * `cdk diff`        compare deployed stack with current state
+ * `cdk docs`        open CDK documentation
+
+Enjoy!
