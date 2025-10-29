@@ -71,6 +71,12 @@ Deploy the infrastructure:
 cdk deploy --profile [PROFILE]
 ```
 
+## Implementing the infrastructure!
+Now you can start implementing your resources.
+Remember, you will be able to attach Cognito User Pool to your API Gateway authorizer and let Cognito do the authentication :)
+If you are lost, please refere to the reference code in this repository...
+Or ask GenAI!
+
 ## Common Issues
 If you face the following error:
 ```bash
@@ -89,7 +95,7 @@ source .venv/Scripts/activate
 
 Also, when running **cdk** commands, make sure to stay at the location where your **cdk.json** file is present.
 
-# 🛠️ Deploying Python CDK Stacks to Multiple Environments Using YAML Configs
+# 🛠️ (OUT OF SCOPE) Deploying Python CDK Stacks to Multiple Environments Using YAML Configs
 
 This guide shows how to deploy your **AWS CDK (Python)** stack to **multiple environments** (like `dev`, `test`, `prod`) using:
 
