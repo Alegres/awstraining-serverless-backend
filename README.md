@@ -19,7 +19,7 @@ python -m pip install --upgrade virtualenv
 
 Install CDK:
 ```bash
-npm install -g aws-cdk@2.185.0
+npm install -g aws-cdk@2.1006.0
 ```
 
 ## Setup CDK project
